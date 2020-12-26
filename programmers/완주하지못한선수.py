@@ -6,3 +6,11 @@ def solution(participant, completion):
     return participant[0]
 
 
+# 두번째 풀이 -> 정확성: 100 효율성: 100
+def solution(participant, completion):
+    participant.sort() # O(nlogn)
+    completion.sort() # O(nlogn)
+    for i, z in zip(participant, completion):
+        if i != z:
+            return i
+    return participant[-1]
