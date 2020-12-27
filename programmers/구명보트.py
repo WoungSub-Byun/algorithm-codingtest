@@ -15,3 +15,15 @@ def solution(people, limit):
             break
     return rescue
 
+# 두번째 풀이 -> 정답 -> 인덱스를 사용하여 풀어야 한다. del, pop 등을 사용하면 정확도는 맞지만 효율성에서 틀리게 된다.
+def solution(people, limit):
+    rescue = 0
+    people.sort()
+    i = 0
+    j = len(people) -1
+    while i<=j:
+        rescue+=1
+        if people[i] + people[j] <= limit:
+            i+=1
+        j-=1
+    return rescue
