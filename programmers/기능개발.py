@@ -18,3 +18,14 @@ def solution(progresses, speeds):
             stack = 1
         i+=1
     return answer
+
+
+# 두번째 풀이
+def solution(progresses, speeds):
+    Q = []
+    for q, s in zip(progresses, speeds):
+        if len(Q) == 0 or Q[-1][0] < -((q - 100) // s):
+            Q.append([-((q - 100) // s), 1])
+        else:
+            Q[-1][1] += 1
+    return [q[1] for q in Q]
