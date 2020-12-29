@@ -16,3 +16,19 @@ def solution(prices):
     return answer
 
 
+# 두번째 풀이
+from collections import deque
+
+def solution2(prices):
+    answer = []
+    prices = deque(prices)
+    while prices:
+        c = prices.popleft()
+        count = 0
+        for i in prices:
+            if c > i:
+                count += 1
+                break
+            count += 1
+        answer.append(count)
+    return answer
