@@ -28,6 +28,12 @@ def solution(s):
     return min(result)
 
 
+# 풀이 방법
+# for i in range(len(s) // 2, 0, -1):
+# 여기서 자를 범위를 큰 숫자부터 돌린다.
+# len(s) // 2를 한 이유는 가장 긴 범위가 문자열의 절반 접는 경우이기 때문이다.
+
+
 # 2차 100
 def solution(s):
     if len(s) == 1:
@@ -59,4 +65,4 @@ def solution(s):
     return min(result)
 
 
-# len(s) == 1일때 추가해줬다.
+# len(s) == 1일때  추가해줬다.
