@@ -3,6 +3,7 @@ import itertools
 
 
 def solution(numbers, target):
+    for i in range()
     answer = 0
     sum_numbers = sum(numbers)
     print(sum_numbers)
