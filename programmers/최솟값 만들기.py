@@ -27,3 +27,8 @@ def solution(A, B):
     B = sorted(B, reverse=True)
 
     return sum([a * b for a, b in zip(A, B)])
+
+
+# 1, 2차는 완전탐색
+# 3차 때는 A의 가장작은 수와 B의 가장 큰수를 곱했을 때 가장 작은 합계가 나오기 때문에
+# A는 내림차순, B는 오름차순으로 정렬하여 합계를 내었다.
