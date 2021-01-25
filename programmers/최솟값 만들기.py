@@ -19,3 +19,11 @@ def solution2(A, B):
         tmp = B.pop(0)
         B.append(tmp)
     return min(sums_list)
+
+
+# 3차 100
+def solution(A, B):
+    A = sorted(A)
+    B = sorted(B, reverse=True)
+
+    return sum([a * b for a, b in zip(A, B)])
