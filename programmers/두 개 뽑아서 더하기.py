@@ -10,3 +10,14 @@ def solution(numbers):
     answer = sorted(list(set(answer)))
     return answer
 
+# 두번째 풀이
+
+from itertools import combinations
+
+def solution(numbers):
+    numbers = list(combinations(numbers, 2))
+    
+    answer = list(set([i[0]+i[1] for i in numbers]))
+    answer.sort()
+    return answer
+    
