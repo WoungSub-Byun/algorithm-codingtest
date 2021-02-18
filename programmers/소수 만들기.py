@@ -15,3 +15,16 @@ def isPrime(data):
             return False
     else:
         return True
+
+# 두 번째 풀이 100
+from itertools import combinations as cb
+
+def solution(nums):
+    answer = 0
+    for num in cb(nums, 3):
+        for i in range(2, sum(num) // 2):
+            if sum(num) % i == 0:
+                break
+        else:
+            answer += 1
+    return answer
