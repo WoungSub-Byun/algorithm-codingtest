@@ -61,4 +61,22 @@ def other_solution(orders, course):
     return answer
 
 
-print(other_solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"], [2, 3, 4]))
+# 3번째 시도: 첫번째 시도에서 더 간단하게 구현해봄 : 100%
+from itertools import combinations
+from collections import Counter
+
+
+def right_solution(orders, course):
+
+    answer = []
+    for course in courses:
+        temp = []
+        for order in orders:
+            combi = combinations(sorted(order), course)
+            temp += combi
+        counter = Counter(temp)
+        if len(counter) != 0 and max(counter.values()) != 1:
+            answer += [
+                "".join(key) for key in counter if counter[key] == max(counter.values())
+            ]
+    return sorted(answer)
