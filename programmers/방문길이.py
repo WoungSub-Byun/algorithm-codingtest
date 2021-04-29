@@ -82,3 +82,17 @@ def solution(dirs):
             continue
         visited.append([prev, (x, y)])
     return len(visited)
+
+
+# dictionary와 set을 사용한 간결한 풀이
+def solution(dirs):
+    visited = set()
+    move = {"U": (0, 1), "L": (-1, 0), "D": (0, -1), "R": (1, 0)}
+    x, y = 0, 0
+    for dir in dirs:
+        nx, ny = x + move[dir][0], y + move[dir][1]
+        if -5 <= nx <= 5 and -5 <= ny <= 5:
+            visited.add((x, y, nx, ny))
+            visited.add((nx, ny, x, y))
+            x, y = nx, ny
+    return len(visited) // 2
