@@ -52,3 +52,33 @@ def solution(dirs):
             continue
         visited.append([prev, (x, y)])
     return len(visited)
+
+
+# 최종 제출본
+def solution(dirs):
+
+    x, y = 0, 0
+    new_dirs, visited = list(), list()
+
+    for dir in dirs:
+        if dir == "U":
+            new_dirs.append([0, 1])
+        elif dir == "L":
+            new_dirs.append([-1, 0])
+        elif dir == "R":
+            new_dirs.append([1, 0])
+        elif dir == "D":
+            new_dirs.append([0, -1])
+
+    for dir in new_dirs:
+        prev = (x, y)
+        x += dir[0]
+        y += dir[1]
+        if x < -5 or x > 5 or y < -5 or y > 5:
+            x += -dir[0]
+            y += -dir[1]
+            continue
+        elif [prev, (x, y)] in visited or [(x, y), prev] in visited:
+            continue
+        visited.append([prev, (x, y)])
+    return len(visited)
