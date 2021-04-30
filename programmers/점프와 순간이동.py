@@ -8,3 +8,8 @@ def solution(n):
         else:
             n /= 2
     return answer
+
+
+# 다른 풀이: python bin() 내장 함수 사용: 2진수로 만들어주는 함수
+def other_solution(n):
+    return bin(n).count("1")
