@@ -19,3 +19,9 @@ def solution(s):
         for word in s.split()
     ]
     return " ".join(answer)
+
+
+# 3차 시도: 100
+# 풀이: lower()와 capitalize()를 사용해 첫글자 대문자+뒤문자들 소문자 형태로 변형을 수행하였고 split()의 조건을 " "으로 한정하였습니다.
+def solution(s):
+    return " ".join([word.lower().capitalize() for word in s.split(" ")])
