@@ -141,3 +141,29 @@ def solution(str1, str2):
     if not result[1]:
         return 65536
     return int((result[0] / result[1]) * 65536)
+
+
+# 3차 코드 리팩토링
+def solution(str1, str2):
+    str1, str2 = str1.upper(), str2.upper()
+    str1 = [
+        (str1[i] + str1[i + 1])
+        for i in range(len(str1) - 1)
+        if (str1[i] + str1[i + 1]).isalpha()
+    ]
+    str2 = [
+        (str2[i] + str2[i + 1])
+        for i in range(len(str2) - 1)
+        if (str2[i] + str2[i + 1]).isalpha()
+    ]
+
+    gyo = set(str1) & set(str2)
+    hap = set(str1) | set(str2)
+
+    if not len(hap):
+        return 65536
+
+    gyo = sum([min(str1.count(elem), str2.count(elem)) for elem in gyo])
+    hap = sum([max(str1.count(elem), str2.count(elem)) for elem in hap])
+
+    return int((gyo / hap) * 65536)
