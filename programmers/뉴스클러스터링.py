@@ -99,4 +99,45 @@ def solution(str1, str2):
         return 65536
     return int((result[0] / result[1]) * 65536)
 
-    from collections import Counter
+
+# 3차 시도: 100%
+from collections import Counter
+
+
+def solution(str1, str2):
+    str1, str2 = str1.lower(), str2.lower()
+    multiple_sets = [[], []]
+    cnt = 0
+    multiple_sets[0] = [
+        (str1[i] + str1[i + 1])
+        for i in range(len(str1) - 1)
+        if (str1[i] + str1[i + 1]).isalpha()
+    ]
+    multiple_sets[1] = [
+        (str2[i] + str2[i + 1])
+        for i in range(len(str2) - 1)
+        if (str2[i] + str2[i + 1]).isalpha()
+    ]
+    set_count = [dict(Counter(st)) for st in multiple_sets]
+    min_sets = list(set(set_count[0].keys()) & set(set_count[1].keys()))
+    max_sets = list(set(set_count[0].keys()) | set(set_count[1].keys()))
+    result = [0, 0]
+    for char in min_sets:
+        min_num = (
+            set_count[0][char]
+            if set_count[0][char] < set_count[1][char]
+            else set_count[1][char]
+        )
+        result[0] += min_num
+
+    for char in max_sets:
+        max_num = 0
+        if char in set_count[0]:
+            max_num = set_count[0][char]
+        if char in set_count[1]:
+            max_num = max_num if max_num > set_count[1][char] else set_count[1][char]
+        result[1] += max_num
+
+    if not result[1]:
+        return 65536
+    return int((result[0] / result[1]) * 65536)
